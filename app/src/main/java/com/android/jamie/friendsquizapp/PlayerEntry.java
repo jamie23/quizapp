@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 import java.io.File;
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -42,7 +43,7 @@ public class PlayerEntry extends Activity {
 
                 String serialized = playerPref.getString("players", "");
 
-                List<String> list = new LinkedList<String>();
+                List<String> list = new LinkedList<>();
 
                 if(serialized.isEmpty()){
                     list.add(0,playerName.getText().toString().toLowerCase());
@@ -66,22 +67,26 @@ public class PlayerEntry extends Activity {
         btnFinished.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Update player counter to 0
+                //Check that at least one person has been added
                 SharedPreferences playerPref = getSharedPreferences("playerPref",0);
-
                 String serialized = playerPref.getString("players", "");
-                List<String> list = new LinkedList<String>();
+                List<String> list = new LinkedList<>();
                 list.addAll(Arrays.asList(TextUtils.split(serialized, ",")));
-                int playerCount = list.size();
-                SharedPreferences.Editor editor = playerPref.edit();
-                editor.putInt("playerCount", playerCount);
-                editor.putInt("currPlayer", 0);
 
-                editor.commit();
+                if(list.size()==0){
+                    Toast.makeText(PlayerEntry.this, "Please input players before you begin", Toast.LENGTH_SHORT).show();
+                }else {
+                    int playerCount = list.size();
+                    SharedPreferences.Editor editor = playerPref.edit();
+                    editor.putInt("playerCount", playerCount);
+                    editor.putInt("currPlayer", 0);
 
-                Intent questionSelect = new Intent(getApplicationContext(), QuestionSelector.class);
-                startActivity(questionSelect);
-                finish();
+                    editor.commit();
+
+                    Intent questionSelect = new Intent(getApplicationContext(), QuestionSelector.class);
+                    startActivity(questionSelect);
+                    finish();
+                }
             }
         });
     }
@@ -108,7 +113,7 @@ public class PlayerEntry extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void clearPreferences(){
+    private void clearPreferences(){
         SharedPreferences preferences = getSharedPreferences("playerPref", 0);
         preferences.edit().remove("players").commit();
 
@@ -116,7 +121,8 @@ public class PlayerEntry extends Activity {
 
         try{
             File file = new File(DB_PATH);
-            file.delete();
+            boolean fileDeleted = file.delete();
+            Log.d("File deleted safely: ", String.valueOf(fileDeleted));
         }catch(Exception ex)
         {
             ex.printStackTrace();
