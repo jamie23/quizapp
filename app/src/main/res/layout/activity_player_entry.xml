@@ -25,6 +25,7 @@
         android:inputType="textPersonName"
         android:ems="10"
         android:id="@+id/inputName"
+        android:labelFor="@id/inputName"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"/>
 

@@ -2,9 +2,6 @@
     <string name="app_name">Dranking Quiz</string>
 
     <string name="action_settings">Settings</string>
-    <string name="title_activity_question_selector">QuestionSelector</string>
-    <string name="title_activity_question">QuestionActivity</string>
-    <string name="title_activity_forfeit_selector">ForfeitSelector</string>
     <string name="player_entry_name">Name</string>
     <string name="player_entry_addplayer">Add Player</string>
     <string name="player_entry_startquestions">Start Questions</string>

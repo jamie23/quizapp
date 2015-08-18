@@ -16,7 +16,7 @@ import java.io.InputStreamReader;
  * Created by jamie on 21/07/15.
  */
 public class DownloadJsonTask extends AsyncTask<String, Void, JSONObject>{
-    Context activityContext;
+    private final Context activityContext;
 
     public DownloadJsonTask(Context passedContext){
         activityContext = passedContext;
@@ -49,7 +49,7 @@ public class DownloadJsonTask extends AsyncTask<String, Void, JSONObject>{
         return null;
     }
 
-    public void AddQuestionToDB(String author, String question, String answer, String level){
+    private void AddQuestionToDB(String author, String question, String answer, String level){
         final DatabaseHandler db = new DatabaseHandler(activityContext);
         db.addQuestion(author, question, answer, level);
     }

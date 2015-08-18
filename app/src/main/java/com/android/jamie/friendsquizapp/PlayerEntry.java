@@ -66,7 +66,7 @@ public class PlayerEntry extends Activity {
                 }catch(Exception e){
                     e.printStackTrace();
                 }
-                editor.commit();
+                editor.apply();
                 playerName.setText("");
             }
         });
@@ -88,7 +88,7 @@ public class PlayerEntry extends Activity {
                     editor.putInt("playerCount", playerCount);
                     editor.putInt("currPlayer", 0);
 
-                    editor.commit();
+                    editor.apply();
 
                     Intent questionSelect = new Intent(getApplicationContext(), QuestionSelector.class);
                     startActivity(questionSelect);
@@ -122,7 +122,7 @@ public class PlayerEntry extends Activity {
 
     private void clearPreferences(){
         SharedPreferences preferences = getSharedPreferences("playerPref", 0);
-        preferences.edit().remove("players").commit();
+        preferences.edit().remove("players").apply();
 
         String DB_PATH = "data/data/com.android.jamie.friendsquizapp/databases/QuestionsDB";
 

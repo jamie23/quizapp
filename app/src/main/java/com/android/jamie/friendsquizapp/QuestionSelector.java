@@ -98,7 +98,7 @@ public class QuestionSelector extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-    public String updateCurrentPlayer() {
+    private String updateCurrentPlayer() {
         SharedPreferences playerPref = getSharedPreferences("playerPref", 0);
 
         String serialized = playerPref.getString("players", "");
@@ -121,7 +121,7 @@ public class QuestionSelector extends Activity {
 
         SharedPreferences.Editor editor = playerPref.edit();
         editor.putInt("currPlayer", currPlayer + 1);
-        editor.commit();
+        editor.apply();
 
         return currPlayerName;
     }

@@ -21,7 +21,7 @@
 
     <!-- Generated Question -->
     <TextView
-        android:text="Generated Question"
+        android:text=""
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -50,7 +50,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="280dp"
-        android:text="Generated answer"
+        android:text=""
         android:textSize="16sp"/>
 
     <TextView
@@ -60,7 +60,7 @@
         android:id="@+id/txtAuthor"
         android:layout_above="@+id/btnFinished"
         android:layout_marginBottom="46dp"
-        android:text="Generated author"
+        android:text=""
         android:layout_centerHorizontal="true"
         android:textSize="12sp"/>
 

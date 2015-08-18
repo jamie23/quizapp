@@ -98,6 +98,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 questionList.add(jObject);
             } while (cursor.moveToNext());
         }
+        cursor.close();
         return questionList;
     }
 
@@ -128,6 +129,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 questionList.add(jObject);
             } while (cursor.moveToNext());
         }
+
+        cursor.close();
 
         if(questionList.size() == 0){
             return null;
@@ -167,6 +170,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         }catch (Exception e) {
             e.printStackTrace();
         }
+        cursor.close();
 
         return question;
 
