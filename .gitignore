@@ -35,8 +35,3 @@ proguard/
 
 # Android Studio Navigation editor temp files
 .navigation/
-
-#Until I have removed sensitive information
-*ForfeitSelector.java
-*DownloadJsonTask.java
-

@@ -2,6 +2,7 @@ package com.android.jamie.friendsquizapp;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -20,6 +21,9 @@ public class QuestionActivity extends Activity {
         Button btnFinished = (Button) findViewById(R.id.btnFinished);
         TextView txtQuestion = (TextView) findViewById(R.id.txtQuestion);
         TextView txtAns = (TextView) findViewById(R.id.txtAns);
+        TextView txtAuthor = (TextView) findViewById(R.id.txtAuthor);
+        TextView txtQuestionTitle = (TextView) findViewById(R.id.txtQuestionTitle);
+        TextView txtAnsTitle = (TextView) findViewById(R.id.txtAnsTitle);
 
         Bundle extras = getIntent().getExtras();
         final String id = extras.getString("questionID");
@@ -32,6 +36,13 @@ public class QuestionActivity extends Activity {
         try{
             txtQuestion.setText(question.get("question").toString());
             txtAns.setText(question.get("answer").toString());
+            txtAuthor.setText("Brought to you by: " + question.get("author").toString());
+
+            //Setting titles to custom fonts
+            Typeface lobsterFont = Typeface.createFromAsset(getAssets(), "fonts/LobsterTwo-Regular.ttf");
+            txtQuestionTitle.setTypeface(lobsterFont);
+            txtAnsTitle.setTypeface(lobsterFont);
+
         }catch(Exception e){
             e.printStackTrace();
         }

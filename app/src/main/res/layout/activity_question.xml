@@ -7,32 +7,71 @@
                  android:paddingTop="@dimen/activity_vertical_margin"
                  android:paddingBottom="@dimen/activity_vertical_margin"
                 tools:context="com.android.jamie.friendsquizapp.QuestionActivity">
+
+    <!-- Question Title -->
     <TextView
-        android:text=""
+        android:text="@string/question_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="32dp"
+        android:id="@+id/txtQuestionTitle"
+        android:textSize="36sp"/>
+
+    <!-- Generated Question -->
+    <TextView
+        android:text="Generated Question"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/txtQuestionTitle"
+        android:layout_marginTop="100dp"
         android:id="@+id/txtQuestion"
-        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="24sp"
         />
+
+    <!-- Answer Title -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/question_answer"
+        android:id="@+id/txtAnsTitle"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:textSize="22sp"/>
+
+    <!-- Generated Answer -->
+    <TextView
+        android:id="@+id/txtAns"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="280dp"
+        android:text="Generated answer"
+        android:textSize="16sp"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=""
-        android:id="@+id/txtAns"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"/>
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:id="@+id/txtAuthor"
+        android:layout_above="@+id/btnFinished"
+        android:layout_marginBottom="46dp"
+        android:text="Generated author"
+        android:layout_centerHorizontal="true"
+        android:textSize="12sp"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Drinks"
+        android:text="@string/question_drinks"
         android:id="@+id/btnFinished"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="59dp"/>
+        android:layout_marginBottom="20dp"/>
+
 
 </RelativeLayout>

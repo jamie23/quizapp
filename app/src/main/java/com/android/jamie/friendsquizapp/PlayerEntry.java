@@ -3,6 +3,7 @@ package com.android.jamie.friendsquizapp;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -11,6 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 import java.io.File;
 import java.util.Arrays;
@@ -31,8 +33,13 @@ public class PlayerEntry extends Activity {
         //Getting the questions from the server
         new com.android.jamie.friendsquizapp.DownloadJsonTask(this).execute("http://jamie23.pythonanywhere.com/api/v1/questions/?format=json");
 
+        Typeface lobsterFont = Typeface.createFromAsset(getAssets(), "fonts/LobsterTwo-Regular.ttf");
+
         Button btnNextPlayer = (Button) findViewById(R.id.btnNextPlayer);
         Button btnFinished = (Button) findViewById(R.id.btnFinished);
+        TextView txtInputTitle = (TextView) findViewById(R.id.txtName);
+
+        txtInputTitle.setTypeface(lobsterFont);
 
         final EditText playerName = (EditText) findViewById(R.id.inputName);
 

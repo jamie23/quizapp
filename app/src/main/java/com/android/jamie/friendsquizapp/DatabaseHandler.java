@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-/**
+/*
  * Created by jamie on 30/07/15.
  */
 public class DatabaseHandler extends SQLiteOpenHelper {
@@ -74,7 +74,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
 
     public List<JSONObject> getAllQuestions() {
-        List<JSONObject> questionList = new ArrayList<JSONObject>();
+        List<JSONObject> questionList = new ArrayList<>();
         // Select All Query
         String selectQuery = "SELECT * FROM " + TABLE_QUESTIONS;
 
@@ -103,7 +103,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     //Get random question for a passed level that is not written by the current user
     public JSONObject getRandomQuestion(int level, String currUser) {
-        List<JSONObject> questionList = new ArrayList<JSONObject>();
+        List<JSONObject> questionList = new ArrayList<>();
 
         // Select All Query
         String selectQuery = "SELECT * FROM " + TABLE_QUESTIONS + " WHERE " + KEY_USED + " = 0 " + "AND " + KEY_LEVEL + " = " + level +

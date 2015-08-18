@@ -8,40 +8,52 @@
                 tools:context="com.android.jamie.friendsquizapp.QuestionSelector">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Drinking Game"
         android:id="@+id/currPlayer"
-        android:layout_marginTop="34dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"/>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Question 1"
-        android:id="@+id/btnOne"
-        android:layout_marginTop="82dp"
-        android:layout_below="@+id/currPlayer"
-        android:layout_centerHorizontal="true"/>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Question 2"
-        android:id="@+id/btnTwo"
-        android:layout_above="@+id/btnThree"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="80dp"/>
+        android:layout_marginTop="32dp"
+        android:text=""
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="36sp"/>
+
+    <Button
+        android:id="@+id/btnOne"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/currPlayer"
+        android:layout_marginTop="82dp"
+        android:text="@string/question_select_one"/>
+
+    <Button
+        android:id="@+id/btnTwo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/btnOne"
+        android:layout_marginTop="50dp"
+        android:text="@string/question_select_two"/>
+
+    <Button
+        android:id="@+id/btnThree"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/btnTwo"
+        android:layout_marginTop="50dp"
+        android:text="@string/question_select_three"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Question 3"
-        android:id="@+id/btnThree"
-        android:layout_marginBottom="80dp"
+        android:text="@string/question_skip"
+        android:id="@+id/btnSkip"
         android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/btnTwo"/>
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="20dp"
+        android:minHeight="0dp"
+        android:minWidth="0dp"/>
 
 </RelativeLayout>
