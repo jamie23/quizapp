@@ -5,6 +5,7 @@
     <string name="player_entry_name">Name</string>
     <string name="player_entry_addplayer">Add Player</string>
     <string name="player_entry_startquestions">Start Questions</string>
+    <string name="player_entry_error">Please input players before you begin</string>
     <string name="question_select_one">Question One</string>
     <string name="question_select_two">Question Two</string>
     <string name="question_select_three">Question Three</string>

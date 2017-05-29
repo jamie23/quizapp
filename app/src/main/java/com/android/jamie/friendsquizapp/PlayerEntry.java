@@ -14,11 +14,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import java.io.File;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
-
 
 public class PlayerEntry extends Activity {
 
@@ -38,6 +38,7 @@ public class PlayerEntry extends Activity {
         Button btnNextPlayer = (Button) findViewById(R.id.btnNextPlayer);
         Button btnFinished = (Button) findViewById(R.id.btnFinished);
         TextView txtInputTitle = (TextView) findViewById(R.id.txtName);
+        final TextView txtErrorNoPlayers = (TextView) findViewById(R.id.txt_error);
 
         txtInputTitle.setTypeface(lobsterFont);
 
@@ -46,24 +47,26 @@ public class PlayerEntry extends Activity {
         btnNextPlayer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SharedPreferences playerPref = getSharedPreferences("playerPref",0);
+                txtErrorNoPlayers.setVisibility(View.GONE);
+
+                SharedPreferences playerPref = getSharedPreferences("playerPref", 0);
 
                 String serialized = playerPref.getString("players", "");
 
                 List<String> list = new LinkedList<>();
 
-                if(serialized.isEmpty()){
-                    list.add(0,playerName.getText().toString().toLowerCase());
-                }else{
+                if (serialized.isEmpty()) {
+                    list.add(0, playerName.getText().toString().toLowerCase());
+                } else {
                     list.addAll(Arrays.asList(TextUtils.split(serialized, ",")));
                     list.add(playerName.getText().toString().toLowerCase());
                 }
 
                 SharedPreferences.Editor editor = playerPref.edit();
 
-                try{
+                try {
                     editor.putString("players", TextUtils.join(",", list));
-                }catch(Exception e){
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
                 editor.apply();
@@ -75,14 +78,15 @@ public class PlayerEntry extends Activity {
             @Override
             public void onClick(View v) {
                 //Check that at least one person has been added
-                SharedPreferences playerPref = getSharedPreferences("playerPref",0);
+                SharedPreferences playerPref = getSharedPreferences("playerPref", 0);
                 String serialized = playerPref.getString("players", "");
                 List<String> list = new LinkedList<>();
                 list.addAll(Arrays.asList(TextUtils.split(serialized, ",")));
 
-                if(list.size()==0){
-                    Toast.makeText(PlayerEntry.this, "Please input players before you begin", Toast.LENGTH_SHORT).show();
-                }else {
+                if (list.size() == 0) {
+                    txtErrorNoPlayers.setVisibility(View.VISIBLE);
+                } else {
+                    txtErrorNoPlayers.setVisibility(View.GONE);
                     int playerCount = list.size();
                     SharedPreferences.Editor editor = playerPref.edit();
                     editor.putInt("playerCount", playerCount);
@@ -120,18 +124,17 @@ public class PlayerEntry extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void clearPreferences(){
+    private void clearPreferences() {
         SharedPreferences preferences = getSharedPreferences("playerPref", 0);
         preferences.edit().remove("players").apply();
 
         String DB_PATH = "data/data/com.android.jamie.friendsquizapp/databases/QuestionsDB";
 
-        try{
+        try {
             File file = new File(DB_PATH);
             boolean fileDeleted = file.delete();
             Log.d("File deleted safely: ", String.valueOf(fileDeleted));
-        }catch(Exception ex)
-        {
+        } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
